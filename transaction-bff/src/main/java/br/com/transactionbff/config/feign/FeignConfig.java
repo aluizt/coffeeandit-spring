@@ -1,4 +1,4 @@
-package br.com.transactionbff.config;
+package br.com.transactionbff.config.feign;
 
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
