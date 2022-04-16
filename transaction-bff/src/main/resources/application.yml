@@ -8,5 +8,7 @@ springdoc:
     path: /swagger-ui.html
   packagesToScan: br.com.transactionbff.api
 
+limites:
+  url: http://localhost:8081
 
 

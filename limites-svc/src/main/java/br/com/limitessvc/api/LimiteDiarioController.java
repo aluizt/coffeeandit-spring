@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.websocket.server.PathParam;
 import java.util.Optional;
 
 @RestController
@@ -17,6 +16,17 @@ public class LimiteDiarioController {
 
     public LimiteDiarioController(LimiteDiarioService limiteDiarioService) {
         this.limiteDiarioService = limiteDiarioService;
+    }
+
+    @GetMapping("/limite-diario/{agencia}/{conta}")
+    public LimiteDiario buscarLimiteDiario(
+            @PathVariable("agencia") final Long agencia,
+            @PathVariable("conta") final Long conta) {
+        final Optional<LimiteDiario> limiteDiario = limiteDiarioService.buscarLimiteDiario(agencia, conta);
+        if (limiteDiario.isPresent()) {
+            return limiteDiario.get();
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Recurso não encontrado");
     }
 
     @GetMapping("/limite-diario/{id}")

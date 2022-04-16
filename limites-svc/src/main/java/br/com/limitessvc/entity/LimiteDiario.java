@@ -2,9 +2,7 @@ package br.com.limitessvc.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -16,6 +14,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(of = "id")
 public class LimiteDiario {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long agencia;
     private Long conta;
